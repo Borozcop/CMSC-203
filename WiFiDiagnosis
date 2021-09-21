@@ -1,0 +1,169 @@
+/* 
+
+ * Class: CMSC203  
+
+ * Instructor: Farnaz Eivazi
+
+ * Description: Assignment # 1. Build an application that will step through some possible problems to restore internet connectivity.
+   Assume that your computer uses wi-fi to connect to a router which connects to an Internet Service Provider (ISP)
+   which connects to the Internet.
+
+ * Due: 09/21/21
+
+ * Platform/compiler: Eclipse
+
+ * I pledge that I have completed the programming assignment independently. 
+
+   I have not copied the code from a student or any source. 
+
+   I have not given my code to any student. 
+
+   Bryan Orozco 
+
+*/ 
+import java.util.Scanner; //Allow Scanner class
+
+public class WiFiDiagnosis {
+
+	@SuppressWarnings("resource")
+	public static void main(String[] args) { //Program starts in main
+		
+		Scanner input = new Scanner(System.in);
+		
+		
+		// 1st Step: Ask to reboot the computer and attempt to reconnect.
+		
+		System.out.println("If you have a problem with internet connectivity, this WiFi Diagnosis might work.");
+		System.out.println("");
+		System.out.println("Reboot the computer and try to connect."); //Display 1st solution.
+		System.out.println("Did that fix the problem?");//takes yes or no input)
+		String response= input.nextLine(); //takes yes or no input
+		
+		//validation
+		
+		
+			while(!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) { //This was not on pseudocode, but I wanted to add
+				//a validating while statement to ensure that the user only enters yes or no inputs.
+			
+				System.out.println("Please enter yes or no."); //Ask for the right input
+				System.out.println("Did that fix the problem?"); //asks question
+				response= input.nextLine(); //takes yes or no input
+			
+				}
+		
+		// if yes
+		
+		
+			if (response.equalsIgnoreCase("yes")) { //If user inputs yes, this will be displayed.
+				System.out.println("Done!");
+				System.out.println("Programmer's name: Bryan Orozco");
+				return;
+			
+				}
+		
+			//if no
+		
+			//2nd Step: If user says no to the first question, we offer the second solution:
+			
+			else if(response.equalsIgnoreCase("no"))	{
+				System.out.println("Reboot the router and try to connect."); //Display 2nd solution.
+				System.out.println("Did that fix the problem?");//takes yes or no input)
+				response= input.nextLine(); //takes yes or no input
+			
+				}
+			//2nd validation
+			
+			
+				while(!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) { //This was not on pseudocode, but I wanted to add
+					//a validating while statement to ensure that the user only enters yes or no inputs.
+				
+					System.out.println("Please enter yes or no."); //Ask for the right input
+					System.out.println("Did that fix the problem?"); //asks question
+					response= input.nextLine(); //takes yes or no input
+				
+				}
+			
+				//if yes	
+			
+				if (response.equalsIgnoreCase("yes")) { //If user inputs yes, this will be displayed.
+					System.out.println("Done!");
+					System.out.println("Programmer's name: Bryan Orozco");
+					return;		
+				}
+		
+				//if no
+		
+				//3rd Step: If user says no to the first question, we offer the third solution:
+		
+				else if(response.equalsIgnoreCase("no"))	{
+					System.out.println("Make sure the cables connecting the router are firmly plugged in" + 
+					" and power is getting to the router."); //Display 2nd solution.
+					System.out.println("Did that fix the problem?");//takes yes or no input)
+					response= input.nextLine(); //takes yes or no input	
+				
+					}
+			
+			//third validation
+			
+				while(!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) { //This was not on pseudocode, but I wanted to add
+					//a validating while statement to ensure that the user only enters yes or no inputs.
+				
+					System.out.println("Please enter yes or no."); //Ask for the right input
+					System.out.println("Did that fix the problem?"); //asks question
+					response= input.nextLine(); //takes yes or no input			
+				
+				}
+			
+				//if yes
+		
+				if (response.equalsIgnoreCase("yes")) { //If user inputs yes, this will be displayed.
+					System.out.println("Done!");
+					System.out.println("Programmer's name: Bryan Orozco");
+					return;		
+				}	
+		
+				//if no
+				//4th Step: If user says no to the first question, we offer the fourth solution:
+		
+				else if(response.equalsIgnoreCase("no"))	{
+					System.out.println("Move the computer closer to the router and try to connect"); //Display 2nd solution.
+					System.out.println();//takes yes or no input	
+				}
+		
+				//fourth validation
+
+				while(!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) { //This was not on pseudocode, but I wanted to add
+					//a validating while statement to ensure that the user only enters yes or no inputs.
+			
+					System.out.println("Please enter yes or no."); //Ask for the right input
+					System.out.println("Did that fix the problem?"); //asks question
+					response= input.nextLine(); //takes yes or no input		
+		
+				}
+		
+		
+				//if yes
+		
+				if (response.equalsIgnoreCase("yes")) { //If user inputs yes, this will be displayed.
+					System.out.println("Done!");
+					System.out.println("Programmer's name: Bryan Orozco");
+					return;		
+				}	
+		
+				//if no
+				//5th Step: If user says no to the first question, we offer the fifth and final solution:
+		
+				else if(response.equalsIgnoreCase("no"))	{
+					System.out.println("Contact your ISP"); //Display 2nd solution.
+					System.out.println("Programmer's name: Bryan Orozco");
+					return;
+			
+				}
+		
+				input.close(); //closes scanner and does not accept more inputs.
+				
+	
+		}	
+	
+	}
+
