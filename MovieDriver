@@ -1,43 +1,89 @@
 package lab1;
-import java.util.Scanner;
 
-public class MovieDriver {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		Scanner input = new Scanner(System.in);
-		
-		char choice = 'y'; //this will one of the two expected inputs from the user.
-		
-		while(choice=='y')	{
-			
-			Movie m= new Movie(); //calls the movie() object from the movie.java class.
-			
-			System.out.println("Enter the name of a movie: ");
-			String title = input.nextLine();
-			m.setTitle(title); //sets the title 
-			
-			System.out.println("Enter the rating of the movie: ");
-			String rating=input.next();
-			m.setRating(rating);
-			
-			System.out.println("Enter the number of tickets sold: ");
-			int number = input.nextInt();
-			m.setSoldTickets(number);
-			
-			System.out.println(m.toString());
-			
-			System.out.println("Do you want to enther another movie? (y or n)");
-			choice = input.next().charAt(0);
-			input.nextLine();
-			
-		}
-		
-		System.out.println("Goodbye!");
-		
-
-
+public class Movie {
+	private String title;
+	private String rating;
+	private int  soldTickets;
+	 
+	/**
+	 * Default no-arg Constructor
+	 */
+	public  Movie ()
+	{
+		title = "";
+		rating = "";
+		soldTickets = 0;	
 	}
-
+	/**
+	 * Copy Constructor that produces a deep copy of the argument
+	 * @param m A Movie Object
+	 */
+	public  Movie (Movie m)
+	{
+		title = m.title;
+		rating = m.rating;
+		soldTickets = m.soldTickets;	
+	}
+	
+	/**
+	 * Constructor that takes data as input and sets them.
+	 * @param title the title of the movie
+	 * @param rating the rating of the movie
+	 * @param soldTickets number of tickets sold at this theater
+	 */
+	public Movie(String title, String rating, int soldTickets) {
+	 
+		this.title = title;
+		this.rating = rating;
+		this.soldTickets = soldTickets;
+	}
+	/**
+	 * Returns the movie's title
+	 * @return a String corresponding to the movie title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * sets movie's title
+	 * @param title the title of the movie
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * returns movie's rating
+	 * @return a string for movie rating
+	 */
+	public String getRating() {
+		return rating;
+	}
+	/**
+	 * sets movie's rating
+	 * @param rate movie rating
+	 */
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+	/**
+	 * returns number of sold tickets
+	 * @return an int representing number of tickets sold
+	 * 	 */
+	public int getSoldTickets() {
+		return soldTickets;
+	}
+	/**
+	 * sets number of sold tickets
+	 * @param soldTickets number of the soldTickets 
+	 */
+	public void setSoldTickets(int soldTickets) {
+		this.soldTickets = soldTickets;
+	}	
+	
+	/**
+	 * Returns a string with relevant movie information
+	 */
+	public String toString() {
+		return (this.title+" ("+this.rating+"): Tickets Sold: "+this.soldTickets);
+	}
 }
