@@ -1,0 +1,153 @@
+/* 
+
+ * Class: CMSC203  
+
+ * Instructor: Farnaz Eivazi
+
+ * Description: Assignment # 2: Build an application that will receive a guess and report if your guess is the random 
+	number that was generated.  Your application will narrow down the choices according to your previous guesses and continue 
+	to prompt you to enter a guess until you guess correctly.
+
+ * Due: 10/21/21
+
+ * Platform/compiler: Eclipse
+
+ * I pledge that I have completed the programming assignment independently. 
+
+   I have not copied the code from a student or any source. 
+
+   I have not given my code to any student. 
+
+   Bryan Orozco 
+
+*/ 
+
+
+
+import java.util.Scanner;
+
+public class RandomNumberGuesser {
+
+        @SuppressWarnings("resource")
+		public static void main(String[] args) {   //Main method starts here
+               
+        	
+        	Scanner input= new Scanner (System.in); //Scanner object that will store input
+        	
+        		
+                int randNum, nextGuess, highGuess=100, lowGuess=1; //Variable declaration to store int type values.
+                
+                String response;	//This will store reponse on whether user wants to play or not
+                char resp = 0;		//This will store reponse on whether user wants to play or not
+                
+                System.out.println("Welcome to the Random Number Guesser Game!"); //First output of the program/ title of the program.
+                
+                
+                RNG rng= new RNG(); //creating RNG class object which was provided to us.
+                
+                
+                do {
+                             
+                randNum=RNG.rand();  //generates random number
+                
+                RNG.resetCount();	
+                
+                System.out.println("Please enter your first guess");	//Asks user for first input
+                
+                nextGuess= input.nextInt();		// takes input from user
+                
+                                
+                do {
+                
+                
+                if (nextGuess>randNum) {		//Checks if user's input is greater than the desired (randNum)
+                        
+                        if(RNG.inputValidation(nextGuess, lowGuess, highGuess)) //passes the user input, the new low guess, and high guess.
+                   {
+                        	
+                        	
+                       if(nextGuess<=randNum && (randNum-nextGuess)<(randNum-lowGuess))		
+                       {
+                           lowGuess=nextGuess;		//if user input is less than randNum, we will make that number the lowguess
+                           
+                       }
+                       if(nextGuess>=randNum && (nextGuess-randNum)<(highGuess-randNum))
+                       {
+                           highGuess=nextGuess;		//if user input is greater than randNum, we will make that number the highGuess
+                       }
+                   }
+                        
+                System.out.println("Number of guesses is "+rng.getCount());     //display the guess count
+                        
+                System.out.println("Your guess is too high");
+                
+                highGuess=nextGuess;
+                                                                
+                System.out.println("Please enter your next guess between "+lowGuess+" and "+highGuess); //This will display the lowGUess and highGuess initialized above
+                
+                nextGuess= input.nextInt();
+                
+                } else if (nextGuess<randNum) { 	//Checks if user's input is less than the desired (randNum)
+                
+                        if(RNG.inputValidation(nextGuess, lowGuess, highGuess))
+                   {
+                       if(nextGuess<=randNum && (randNum-nextGuess)<(randNum-lowGuess))
+                       {
+                           lowGuess=nextGuess;		//if user input is less than randNum, we will make that number the lowguess
+                       }
+                       if(nextGuess>=randNum && (nextGuess-randNum)<(highGuess-randNum))
+                       {
+                           highGuess=nextGuess;		//if user input is greater than randNum, we will make that number the highGuess
+                       }
+                   }
+                        
+                System.out.println("Number of guesses is "+rng.getCount());     //display the guess count
+                        
+                System.out.println("Your guess is too low");
+                        
+                lowGuess=nextGuess;
+                        
+                System.out.println("Please enter your next guess between "+lowGuess+" and "+highGuess);		//This will display the lowGUess and highGuess initialized above
+                
+                
+                nextGuess= input.nextInt();
+                }
+                }while (nextGuess!=(randNum));	//If the suer input is not the same as the radNum, then we will keep on doing the above until they match
+                
+                if(RNG.inputValidation(nextGuess, lowGuess, highGuess))
+        {
+            if(nextGuess<=randNum && (randNum-nextGuess)<(randNum-lowGuess))
+            {
+                lowGuess=nextGuess;
+            }
+            if(nextGuess>=randNum && (nextGuess-randNum)<(highGuess-randNum))
+            {
+                highGuess=nextGuess;
+            }
+        }
+                //Once nextGuess is the same as randNum. the following will display
+                
+                System.out.println("Number of guesses is "+rng.getCount());
+                
+                System.out.println("Congradulations! You guessed correctly!");     
+                System.out.println("Try again (y or n)");
+                
+                response=input.next();
+                
+                resp=response.charAt(0);
+                
+                //Validation, if user inputs anything other than y or no
+                
+                while (resp != 'Y' && resp != 'y' && resp != 'N' && resp != 'n')
+        {       System.out.print("Please enter Yes or No: ");
+                        response=input.nextLine();	
+                        resp=response.charAt(0);}
+                
+                //If user inputs y, allow to play again, if user inputs n, display message and programmer's name. 
+                
+                }while (resp=='Y' || resp=='y');
+                System.out.println("Thank you very much for playing!");
+                System.out.println("Programmer: Bryan Orozco");
+                }
+
+}
